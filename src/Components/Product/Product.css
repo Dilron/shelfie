@@ -1,0 +1,29 @@
+.product-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 28vh;
+    border-radius: .5em;
+    background: #d34735;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.product-image {
+    width: auto;
+    height: 100%;
+    margin-right: .75em;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: auto;
+    height: 100%;
+}
+
+.product-button-container {
+    display: flex;
+    justify-content: space-between;
+}
