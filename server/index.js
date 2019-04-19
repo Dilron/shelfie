@@ -22,3 +22,5 @@ app.get('/api/inventory', shelfieCtrl.getAllInv)
 app.post('/api/inventory', shelfieCtrl.addToInv)
 
 app.delete('/api/inventory/:id', shelfieCtrl.deleteItem)
+
+app.put('/api/inventory/:id', shelfieCtrl.updateItem)

@@ -16,5 +16,11 @@ module.exports = {
         db.delete_item([req.params.id]).then(newInv => {
             res.status(200).send(newInv)
         })
+    },
+    updateItem (req, res) {
+        const db = req.app.get('db');
+        db.update_item([req.params.id, req.body.name, req.body.img, req.body.price]).then(newInv => {
+            res.status(200).send(newInv)
+        })
     }
 }

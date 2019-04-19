@@ -33,7 +33,7 @@ export default class Product extends Component {
                     <span>{this.props.item.name} <br/>${this.props.item.price}</span>
                     <div className='product-button-container'>
                         <button onClick={() => this.props.removeItem(this.props.item.id)}>Delete</button>
-                        <button>Edit</button>
+                        <button onClick={() => this.props.beginEdit(this.props.item.id)}>Edit</button>
                     </div>
                 </div>
             </div>

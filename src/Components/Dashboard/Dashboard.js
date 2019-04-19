@@ -10,7 +10,8 @@ export default class Dashboard extends Component {
                     return <Product
                     key={ele.id}
                     item={ele}
-                    removeItem={this.props.removeItem}/>
+                    removeItem={this.props.removeItem}
+                    beginEdit={this.props.beginEdit}/>
                 })}
             </div>
         )

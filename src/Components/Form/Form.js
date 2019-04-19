@@ -8,7 +8,21 @@ export default class Form extends Component {
             product: '',
             imgurl: '',
             price: 0,
-            placeholder: true
+            placeholder: true,
+            editStatus: false,
+            editId: 0
+        }
+    }
+
+    componentDidUpdate(){
+        if(this.props.editTarget){
+            this.setState({product: this.props.editTarget.name,
+                imgurl: this.props.editTarget.img, 
+                price: this.props.editTarget.price, 
+                editStatus: true, 
+                placeholder: false,
+                editId: this.props.editTarget.id })
+            this.props.endEdit()
         }
     }
 
@@ -38,6 +52,17 @@ export default class Form extends Component {
         this.resetFields()
     }
 
+    handleUpdate = () => {
+        let newItem = {
+            id: this.state.editId,
+            name: this.state.product,
+            price: this.state.price,
+            img: this.state.imgurl
+        }
+        this.props.updateItem(newItem)
+        this.resetFields()
+    }
+
     resetFields = () => {
         this.setState({product: '', price: 0, imgurl: '', placeholder: true})
     }
@@ -61,7 +86,11 @@ export default class Form extends Component {
                 </div>
                 <div className='form-button-container'>
                     <button onClick={() => this.resetFields()}>Cancel</button>
+                    {this.state.editStatus?
+                    <button onClick={() => this.handleUpdate()}>Update</button>
+                    :
                     <button onClick={() => this.handleAdd()}>Add to Inventory</button>
+                    }
                 </div>
             </div>
         )

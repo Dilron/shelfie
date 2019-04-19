@@ -9,8 +9,10 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      inventory: []
+      inventory: [],
+      editTarget: null,
     }
+    
   }
 
   componentDidMount(){
@@ -45,16 +47,38 @@ class App extends Component {
     .catch(err => console.log('error delete item: ', err))
   }
 
+  updateItem = (newItem) => {
+    axios.put(`/api/inventory/${newItem.id}`, newItem).then(response => {
+      console.log('update item log: ', response)
+      this.getInventory()
+    })
+    .catch(err => console.log('error add item post: ', err))
+  }
+
+  beginEdit = (itemId) => {
+    let editObj = this.state.inventory.find((ele) => ele.id === itemId)
+    this.setState({editTarget: editObj})
+  }
+
+  endEdit = () => {
+    this.setState({editTarget: null})
+  }
+
   render() {
+    let {inventory} = this.state
     return (
       <div className="App">
         <Header/>
         <div className='app-body'>
         <Dashboard
-        inventory={this.state.inventory}
-        removeItem={this.removeItem}/>
+        inventory={inventory}
+        removeItem={this.removeItem}
+        beginEdit={this.beginEdit}/>
         <Form
-        addItem={this.addItem}/>
+        addItem={this.addItem}
+        editTarget={this.state.editTarget}
+        endEdit={this.endEdit}
+        updateItem={this.updateItem}/>
         </div>
         
       </div>
