@@ -64,7 +64,7 @@ export default class Form extends Component {
     }
 
     resetFields = () => {
-        this.setState({product: '', price: 0, imgurl: '', placeholder: true})
+        this.setState({product: '', price: 0, imgurl: '', placeholder: true, editStatus: false})
     }
 
     render (){

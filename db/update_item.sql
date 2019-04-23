@@ -1,5 +1,5 @@
 update products
-set name = $1,
-    img = $2,
-    price = $3
+set name = $2,
+    img = $3,
+    price = $4
 where id = $1;
